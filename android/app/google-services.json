@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "389706394337",
+    "project_id": "past-papers-app-fe52a",
+    "storage_bucket": "past-papers-app-fe52a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389706394337:android:92269bdb6feed8505f25a0",
+        "android_client_info": {
+          "package_name": "com.example.past_papers_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGfYXSz3SpXQ-20lOnd-GHQX69jAJOK6s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
