@@ -12,7 +12,7 @@ class StudyingSubjectsListWidget extends StatelessWidget {
       itemCount: 5,
       itemBuilder: (BuildContext context, int index) {
         return Padding(
-          padding: const EdgeInsets.only(right: 20),
+          padding: const EdgeInsets.only(right: 15),
           child: SubjectTile(
             subjectModel:
                 Subject(subjectName: "Combined Mathamatics", subjectId: "19"),

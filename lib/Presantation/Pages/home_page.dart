@@ -61,6 +61,26 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 10,
+            ),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Recent Opened"),
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text("All Subjects"),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
