@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:past_papers_app/Data/Models/subject.dart';
 
 class SubjectTile extends StatelessWidget {
-  final Subject subjectModel;
+  final SubjectModel subjectModel;
   const SubjectTile({super.key, required this.subjectModel});
 
   @override

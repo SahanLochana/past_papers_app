@@ -18,7 +18,7 @@ class _RecentFileListWudgetState extends State<RecentFileListWudget> {
       height: 500,
       child: ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: 5,
+        itemCount: 1,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
             padding: const EdgeInsets.only(bottom: 10.0),

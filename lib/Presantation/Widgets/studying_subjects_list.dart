@@ -37,16 +37,16 @@ class StudyingSubjectsListWidget extends StatelessWidget {
         if (snapshot.hasError) {
           return Text(snapshot.error.toString());
         } else {
+          List<SubjectModel> studyingSubjects = snapshot.data;
+
           return ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: 5,
+            itemCount: studyingSubjects.length,
             itemBuilder: (BuildContext context, int index) {
+              SubjectModel eachSubjectModel = studyingSubjects[index];
               return Padding(
                 padding: const EdgeInsets.only(right: 15),
-                child: SubjectTile(
-                  subjectModel: Subject(
-                      subjectName: "Combined Mathamatics", subjectId: "19"),
-                ),
+                child: SubjectTile(subjectModel: eachSubjectModel),
               );
             },
           );
