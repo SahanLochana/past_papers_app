@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:past_papers_app/Presantation/Widgets/recent_file_list.dart';
 import 'package:past_papers_app/Presantation/Widgets/studying_subjects_list.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,6 +14,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text("Home Page"),
+        centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
       ),
       floatingActionButton: FloatingActionButton(
@@ -22,17 +25,47 @@ class _HomePageState extends State<HomePage> {
           color: Color(0xFF293241),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-              borderRadius: const BorderRadius.vertical(
-                bottom: Radius.circular(20),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: const BorderRadius.vertical(
+                  bottom: Radius.circular(20),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 10,
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text("Your Subjects ..."),
+                        TextButton(
+                            onPressed: () {}, child: const Text("All Subjects"))
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const SizedBox(
+                      height: 70,
+                      child: StudyingSubjectsListWidget(),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                ),
               ),
             ),
-            child: Padding(
+            Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 20,
                 vertical: 10,
@@ -42,46 +75,19 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text("Your Subjects ..."),
+                      const Text("Recent Opened"),
                       TextButton(
-                          onPressed: () {}, child: const Text("All Subjects"))
+                        onPressed: () {},
+                        child: const Text("All Subjects"),
+                      ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const SizedBox(
-                    height: 80,
-                    child: StudyingSubjectsListWidget(),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
+                  const RecentFileListWudget(),
                 ],
               ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 10,
-            ),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Recent Opened"),
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text("All Subjects"),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
