@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:past_papers_app/Presantation/Pages/home_page.dart';
 import 'package:past_papers_app/Presantation/Theme/app_theme.dart';
+import 'package:past_papers_app/Provider/recent_file_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   // init hive flutter
@@ -17,10 +19,17 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: lightTheme,
-      home: const HomePage(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<RecentFilesProvider>(
+          create: (context) => RecentFilesProvider(),
+        )
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: lightTheme,
+        home: const HomePage(),
+      ),
     );
   }
 }
