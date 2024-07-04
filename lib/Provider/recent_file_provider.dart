@@ -9,15 +9,7 @@ class RecentFilesProvider extends ChangeNotifier {
     PdfFile(fileName: "pdf 04", fileId: "1"),
   ];
 
-  void reoderFunc(PdfFile fileObj) {
-    // if (pdfFiles.contains(fileObj) == true) {
-    //   pdfFiles.remove(fileObj);
-    // }
-    // pdfFiles.insert(0, fileObj);
-    print(pdfFiles.toString());
-    pdfFiles.removeAt(2);
-    notifyListeners();
-  }
+  void reoderFunc(PdfFile fileObj) {}
 
   List<PdfFile> get recentFileList => pdfFiles;
 }
