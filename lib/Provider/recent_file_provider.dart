@@ -6,6 +6,7 @@ class RecentFilesProvider extends ChangeNotifier {
   RecentFilesProvider() {
     getRecentfiles();
   }
+
   List<PdfFile> pdfFiles = [];
 
   void reoderFunc(PdfFile fileObj) {
@@ -17,7 +18,8 @@ class RecentFilesProvider extends ChangeNotifier {
 
   void getRecentfiles() {
     GetRecentFiles handler = GetRecentFiles();
-    handler.gettingRecentFiles();
+    pdfFiles = handler.gettingRecentFiles();
+    notifyListeners();
   }
 
   List<PdfFile> get recentFileList => pdfFiles;

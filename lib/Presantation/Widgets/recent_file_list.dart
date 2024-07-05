@@ -14,24 +14,23 @@ class RecentFileListWudget extends StatefulWidget {
 class _RecentFileListWudgetState extends State<RecentFileListWudget> {
   @override
   Widget build(BuildContext context) {
+    final provider = context.watch<RecentFilesProvider>();
     // to change hight dynamically
 
-    return Consumer<RecentFilesProvider>(
-      builder: (context, value, child) => SizedBox(
-        height: 500,
-        child: ListView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: value.pdfFiles.length,
-          itemBuilder: (BuildContext context, int index) {
-            PdfFile eachPdfFile = value.pdfFiles[index];
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 10.0),
-              child: FileTile(
-                pdfFile: eachPdfFile,
-              ),
-            );
-          },
-        ),
+    return SizedBox(
+      height: 500,
+      child: ListView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: provider.pdfFiles.length,
+        itemBuilder: (BuildContext context, int index) {
+          PdfFile eachPdfFile = provider.pdfFiles[index];
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 10.0),
+            child: FileTile(
+              pdfFile: eachPdfFile,
+            ),
+          );
+        },
       ),
     );
   }

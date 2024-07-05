@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:past_papers_app/Data/Models/pdf_file.dart';
+import 'package:past_papers_app/Presantation/Pages/database_page.dart';
 import 'package:past_papers_app/Provider/recent_file_provider.dart';
+import 'package:provider/provider.dart';
 
 class FileTile extends StatelessWidget {
   final PdfFile pdfFile;
@@ -11,8 +13,8 @@ class FileTile extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
     return GestureDetector(
       onTap: () {
-        RecentFilesProvider _provider = RecentFilesProvider();
-        _provider.reoderFunc(pdfFile);
+        final reoder = context.read<RecentFilesProvider>();
+        reoder.reoderFunc(pdfFile);
       },
       child: Container(
         padding: const EdgeInsets.all(10),
@@ -39,8 +41,8 @@ class FileTile extends StatelessWidget {
                     // file name
                     SizedBox(
                       width: mediaQuery.size.width - 168,
-                      child: const Text(
-                        "A/L Combined Mathamatics 2002 I sinhala.pdf",
+                      child: Text(
+                        pdfFile.fileName,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                       ),
