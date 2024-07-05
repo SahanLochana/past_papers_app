@@ -18,7 +18,7 @@ class UpdateRecentIdListToDb {
   }
 
   // check file in th db
-  int isInDb(String fId, List recentList) {
+  int indexInlist(String fId, List recentList) {
     return recentList.indexOf(fId);
   }
 
@@ -45,7 +45,6 @@ class UpdateRecentFileDataMap extends UpdateRecentIdListToDb {
   //   if (detailsMap.isEmpty) {
   //     return [];
   //   }
-
   //   return detailsMap.keys.toList();
   // }
 
@@ -58,11 +57,7 @@ class UpdateRecentFileDataMap extends UpdateRecentIdListToDb {
   }
 
   // Update the Map
-  void updateTheMap(bool isAvailable, PdfFile pdf, Map detailsMap) {
-    if (isAvailable) {
-      return;
-    }
-
+  void updateTheMap(PdfFile pdf, Map detailsMap) {
     String fileName = pdf.fileName;
     String fileId = pdf.fileId;
     //TODO : add last opened time
@@ -70,5 +65,48 @@ class UpdateRecentFileDataMap extends UpdateRecentIdListToDb {
       "name": fileName,
       "fid": fileId,
     };
+  }
+}
+
+class GetRecentFiles {
+  List<PdfFile> gettingRecentFiles() {
+    List<PdfFile> returnList = [];
+    Box recentBox = Hive.box("recentBox");
+    List listOfRecentFiles = recentBox.get("recebtFileIdList");
+
+    Map mapOfRecentFileDetails = recentBox.get("recentFileDetailsMap");
+
+    for (String id in listOfRecentFiles) {
+      Map details = mapOfRecentFileDetails[id];
+      PdfFile file = PdfFile(fileName: details['name'], fileId: details['fid']);
+      returnList.add(file);
+    }
+    return returnList;
+  }
+}
+
+class RecentFileHandler extends UpdateRecentFileDataMap {
+  List<PdfFile> handleRecent(PdfFile pdfFile) {
+    String fileId = pdfFile.fileId;
+
+    List recentfileIds = loadRecentFileList();
+
+    if (isInTheList(fileId, recentfileIds)) {
+      int index = indexInlist(fileId, recentfileIds);
+      removeTheFile(index, recentfileIds);
+    }
+    addTheFile(fileId, recentfileIds);
+
+    Map recentfileDetails = loadRecentFileData();
+    if (!isAlreadyAvailable(fileId, recentfileDetails)) {
+      updateTheMap(pdfFile, recentfileDetails);
+    }
+    List<PdfFile> returnList = [];
+    for (String fid in recentfileIds) {
+      Map details = recentfileDetails[fid];
+      PdfFile file = PdfFile(fileName: details['name'], fileId: details['fid']);
+      returnList.add(file);
+    }
+    return returnList;
   }
 }

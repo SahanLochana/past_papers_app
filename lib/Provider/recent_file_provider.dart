@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:past_papers_app/Data/Local/write_recent_files.dart';
 import 'package:past_papers_app/Data/Models/pdf_file.dart';
 
 class RecentFilesProvider extends ChangeNotifier {
-  List<PdfFile> pdfFiles = [
-    PdfFile(fileName: "pdf 01", fileId: "1"),
-    PdfFile(fileName: "pdf 02", fileId: "1"),
-    PdfFile(fileName: "pdf 03", fileId: "1"),
-    PdfFile(fileName: "pdf 04", fileId: "1"),
-  ];
+  RecentFilesProvider() {
+    getRecentfiles();
+  }
+  List<PdfFile> pdfFiles = [];
 
-  void reoderFunc(PdfFile fileObj) {}
+  void reoderFunc(PdfFile fileObj) {
+    RecentFileHandler handler = RecentFileHandler();
+    List<PdfFile> listOfPdfs = handler.handleRecent(fileObj);
+    pdfFiles = listOfPdfs;
+    notifyListeners();
+  }
+
+  void getRecentfiles() {
+    GetRecentFiles handler = GetRecentFiles();
+    handler.gettingRecentFiles();
+  }
 
   List<PdfFile> get recentFileList => pdfFiles;
 }

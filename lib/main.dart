@@ -11,6 +11,7 @@ void main() async {
 
   // open box for store subject details
   await Hive.openBox("subjectsBox");
+  await Hive.openBox("recentBox");
   runApp(const MainApp());
 }
 
