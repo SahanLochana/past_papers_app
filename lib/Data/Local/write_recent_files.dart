@@ -32,9 +32,10 @@ class UpdateRecentIdListToDb {
     recentList.insert(0, fId);
   }
 
-  void writeToDb(List newList) {
+  void writeToDb(List newList, Map newMap) {
     Box recentBox = Hive.box("recentBox");
     recentBox.put("recebtFileIdList", newList);
+    recentBox.put("recentFileDetailsMap", newMap);
   }
 }
 
@@ -102,12 +103,11 @@ class RecentFileHandler extends UpdateRecentFileDataMap {
     }
     addTheFile(fileId, recentfileIds);
 
-    writeToDb(recentfileIds);
-
     Map recentfileDetails = loadRecentFileData();
     if (!isAlreadyAvailable(fileId, recentfileDetails)) {
       updateTheMap(pdfFile, recentfileDetails);
     }
+    writeToDb(recentfileIds, recentfileDetails);
     List<PdfFile> returnList = [];
     for (String fid in recentfileIds) {
       Map details = recentfileDetails[fid];

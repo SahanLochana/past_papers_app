@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:past_papers_app/Presantation/Pages/all_subject_page.dart';
 import 'package:past_papers_app/Presantation/Widgets/recent_file_list.dart';
 import 'package:past_papers_app/Presantation/Widgets/studying_subjects_list.dart';
 
@@ -46,9 +47,32 @@ class _HomePageState extends State<HomePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text("Your Subjects ..."),
+                        Text(
+                          "Your Subjects",
+                          style: TextStyle(
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                            fontSize: 18,
+                          ),
+                        ),
                         TextButton(
-                            onPressed: () {}, child: const Text("All Subjects"))
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const AllSubjectPage()));
+                            },
+                            style: const ButtonStyle(
+                              elevation: MaterialStatePropertyAll(0),
+                            ),
+                            child: Text(
+                              "All Subjects",
+                              style: TextStyle(
+                                color:
+                                    Theme.of(context).scaffoldBackgroundColor,
+                                fontSize: 12,
+                              ),
+                            ))
                       ],
                     ),
                     const SizedBox(
@@ -75,10 +99,25 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text("Recent Opened"),
+                      const Text(
+                        "Recent Opened",
+                        style: TextStyle(
+                          color: Color(0xFF293241),
+                          fontSize: 18,
+                        ),
+                      ),
                       TextButton(
                         onPressed: () {},
-                        child: const Text("All Subjects"),
+                        style: const ButtonStyle(
+                          elevation: MaterialStatePropertyAll(0),
+                        ),
+                        child: const Text(
+                          "See more",
+                          style: TextStyle(
+                            color: Color(0xFF293241),
+                            fontSize: 12,
+                          ),
+                        ),
                       ),
                     ],
                   ),

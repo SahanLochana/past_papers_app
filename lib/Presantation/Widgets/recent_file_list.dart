@@ -16,22 +16,38 @@ class _RecentFileListWudgetState extends State<RecentFileListWudget> {
   Widget build(BuildContext context) {
     final provider = context.watch<RecentFilesProvider>();
     // to change hight dynamically
+    double getWidgetHeight(List itemList) {
+      int listLength = itemList.length;
+      const double tileHeight = 80;
+      if (listLength == 0) {
+        return tileHeight * 2;
+      }
+      if (listLength <= 5) {
+        return tileHeight * listLength;
+      } else {
+        return tileHeight * 5;
+      }
+    }
 
     return SizedBox(
-      height: 500,
-      child: ListView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: provider.pdfFiles.length,
-        itemBuilder: (BuildContext context, int index) {
-          PdfFile eachPdfFile = provider.pdfFiles[index];
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 10.0),
-            child: FileTile(
-              pdfFile: eachPdfFile,
+      height: getWidgetHeight(provider.pdfFiles),
+      child: provider.pdfFiles.isEmpty
+          ? const Center(
+              child: Text("No recent files"),
+            )
+          : ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: provider.pdfFiles.length,
+              itemBuilder: (BuildContext context, int index) {
+                PdfFile eachPdfFile = provider.pdfFiles[index];
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 10.0),
+                  child: FileTile(
+                    pdfFile: eachPdfFile,
+                  ),
+                );
+              },
             ),
-          );
-        },
-      ),
     );
   }
 }
