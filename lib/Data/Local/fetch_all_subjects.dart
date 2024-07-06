@@ -5,11 +5,11 @@ class GetAllSubjects {
   List<SubjectModel> getAllSubjects() {
     Box subjectBox = Hive.box("subjectsBox");
     List<SubjectModel> returnList = [];
-    Map<String, dynamic> allSubjects = subjectBox.get("allSubjects");
-    List<String> allSubjectName = allSubjects.keys.toList();
+    Map<dynamic, dynamic> allSubjects = subjectBox.get("allSubjects");
+    List<dynamic> allSubjectName = allSubjects.keys.toList();
     for (String subject in allSubjectName) {
       String name = subject;
-      String sid = allSubjects["sid"];
+      String sid = allSubjects[subject]["sid"];
       SubjectModel subjectModel =
           SubjectModel(subjectName: name, subjectId: sid);
       returnList.add(subjectModel);

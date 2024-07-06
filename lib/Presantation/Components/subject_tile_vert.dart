@@ -28,6 +28,7 @@ class SubjectTileVert extends StatelessWidget {
               width: 10,
             ),
             SizedBox(
+              height: 48,
               child: SingleChildScrollView(
                 child: Text(
                   subjectModel.subjectName,

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:past_papers_app/Presantation/Pages/all_subject_page.dart';
 import 'package:past_papers_app/Presantation/Widgets/recent_file_list.dart';
 import 'package:past_papers_app/Presantation/Widgets/studying_subjects_list.dart';
+import 'package:past_papers_app/Provider/all_subject_provide.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -56,6 +58,10 @@ class _HomePageState extends State<HomePage> {
                         ),
                         TextButton(
                             onPressed: () {
+                              final _provider =
+                                  context.read<AllSubjectProvider>();
+                              _provider.getAllSubjects();
+
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
