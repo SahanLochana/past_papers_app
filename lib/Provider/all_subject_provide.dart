@@ -5,11 +5,12 @@ import 'package:past_papers_app/Data/Models/subject.dart';
 class AllSubjectProvider extends ChangeNotifier {
   List<SubjectModel> subjectList = [];
 
-  void getAllSubjects() {
+  Future<List<SubjectModel>> getAllSubjects() async {
     GetAllSubjects getSubjects = GetAllSubjects();
-    List<SubjectModel> allSubjects = getSubjects.getAllSubjects();
-    subjectList = allSubjects;
-    notifyListeners();
+    subjectList = getSubjects.getAllSubjects();
+    // subjectList = allSubjects;
+    // notifyListeners();
+    return subjectList;
   }
 
   List<SubjectModel> get allSubjectsList => subjectList;

@@ -15,16 +15,32 @@ class _AllSubjectGridWidgetState extends State<AllSubjectGridWidget> {
   @override
   Widget build(BuildContext context) {
     final provier = context.watch<AllSubjectProvider>();
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        mainAxisSpacing: 10,
-        crossAxisSpacing: 10,
-        crossAxisCount: 3,
-      ),
-      itemCount: provier.allSubjectsList.length,
-      itemBuilder: (BuildContext context, int index) {
-        SubjectModel eachSubjectModel = provier.allSubjectsList[index];
-        return SubjectTileVert(subjectModel: eachSubjectModel);
+    return FutureBuilder(
+      future: provier.getAllSubjects(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        if (snapshot.hasError) {
+          return Center(
+            child: Text(snapshot.error.toString()),
+          );
+        } else {
+          return GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              crossAxisCount: 3,
+            ),
+            itemCount: provier.allSubjectsList.length,
+            itemBuilder: (BuildContext context, int index) {
+              SubjectModel eachSubjectModel = provier.allSubjectsList[index];
+              return SubjectTileVert(subjectModel: eachSubjectModel);
+            },
+          );
+        }
       },
     );
   }
