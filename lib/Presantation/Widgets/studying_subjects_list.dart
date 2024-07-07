@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:past_papers_app/Data/Local/fetching_studying_data.dart';
 import 'package:past_papers_app/Data/Models/subject.dart';
+import 'package:past_papers_app/Presantation/Components/subject_placeholder_tile.dart';
 import 'package:past_papers_app/Presantation/Components/subject_tile.dart';
 
 class StudyingSubjectsListWidget extends StatelessWidget {
@@ -17,19 +18,9 @@ class StudyingSubjectsListWidget extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: 5,
             itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: const EdgeInsets.only(right: 15.0),
-                child: Container(
-                  width: 150,
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).scaffoldBackgroundColor,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                ),
+              return const Padding(
+                padding: EdgeInsets.only(right: 15.0),
+                child: SubjectTilePlaceholder(),
               );
             },
           );
