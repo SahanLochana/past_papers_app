@@ -3,4 +3,5 @@ class RouterConstants {
   static const String allSubjectsRouteName = "allSubjects";
   static const String recentMoreRouteName = "recentMore";
   static const String pdfViewRouteName = "pdfView";
+  static const String resultViewRouteName = "resultView";
 }

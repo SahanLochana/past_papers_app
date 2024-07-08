@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:past_papers_app/Data/Models/subject.dart';
+import 'package:past_papers_app/Routes/router_const.dart';
 
 class SubjectTile extends StatelessWidget {
   final SubjectModel subjectModel;
@@ -9,7 +11,8 @@ class SubjectTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // TODO : create navigation and pass the subject id
+        GoRouter.of(context).pushNamed(RouterConstants.resultViewRouteName,
+            pathParameters: {"sId": subjectModel.subjectId});
       },
       child: Container(
         width: 150,
