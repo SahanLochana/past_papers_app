@@ -46,14 +46,6 @@ class UpdateRecentFileDataMap extends UpdateRecentIdListToDb {
     return recentBox.get("recentFileDetailsMap");
   }
 
-  // get recent files ids(keys) to list
-  // List getSavedIds(Map detailsMap) {
-  //   if (detailsMap.isEmpty) {
-  //     return [];
-  //   }
-  //   return detailsMap.keys.toList();
-  // }
-
   // Check already available
   bool isAlreadyAvailable(String fId, Map detailsMap) {
     if (detailsMap.isEmpty || !detailsMap.containsKey(fId)) {
