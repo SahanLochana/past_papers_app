@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:past_papers_app/Data/Models/pdf_file.dart';
 import 'package:past_papers_app/Provider/recent_file_provider.dart';
+import 'package:past_papers_app/Routes/router_const.dart';
 import 'package:provider/provider.dart';
 
 class FileTile extends StatelessWidget {
@@ -12,6 +14,9 @@ class FileTile extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
     return GestureDetector(
       onTap: () {
+        GoRouter.of(context).pushNamed(RouterConstants.pdfViewRouteName,
+            pathParameters: {'fId': pdfFile.fileId});
+
         final reoder = context.read<RecentFilesProvider>();
         reoder.reoderFunc(pdfFile);
       },

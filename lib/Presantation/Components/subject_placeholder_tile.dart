@@ -26,7 +26,7 @@ class SubjectTilePlaceholder extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             Container(

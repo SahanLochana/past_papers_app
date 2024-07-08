@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:past_papers_app/Presantation/Pages/all_subject_page.dart';
+import 'package:go_router/go_router.dart';
 import 'package:past_papers_app/Presantation/Widgets/recent_file_list.dart';
 import 'package:past_papers_app/Presantation/Widgets/studying_subjects_list.dart';
 import 'package:past_papers_app/Provider/all_subject_provide.dart';
+import 'package:past_papers_app/Routes/router_const.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -58,15 +59,12 @@ class _HomePageState extends State<HomePage> {
                         ),
                         TextButton(
                             onPressed: () {
-                              final _provider =
+                              final provider =
                                   context.read<AllSubjectProvider>();
-                              _provider.getAllSubjects();
+                              provider.getAllSubjects();
 
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const AllSubjectPage()));
+                              GoRouter.of(context).pushNamed(
+                                  RouterConstants.allSubjectsRouteName);
                             },
                             style: const ButtonStyle(
                               elevation: MaterialStatePropertyAll(0),

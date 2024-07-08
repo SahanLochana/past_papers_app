@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:past_papers_app/Presantation/Pages/home_page.dart';
 import 'package:past_papers_app/Presantation/Theme/app_theme.dart';
 import 'package:past_papers_app/Provider/all_subject_provide.dart';
 import 'package:past_papers_app/Provider/recent_file_provider.dart';
+import 'package:past_papers_app/Routes/route_config.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -30,10 +30,10 @@ class MainApp extends StatelessWidget {
           create: (context) => AllSubjectProvider(),
         )
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         theme: lightTheme,
-        home: const HomePage(),
+        routerConfig: MyRouteConfig().router,
       ),
     );
   }

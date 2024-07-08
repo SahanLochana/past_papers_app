@@ -19,7 +19,7 @@ class _AllSubjectGridWidgetState extends State<AllSubjectGridWidget> {
       future: provier.getAllSubjects(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         }
