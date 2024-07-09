@@ -39,7 +39,6 @@ class MyRouteConfig {
               child: resultViewPage(sId: state.pathParameters['sId']!));
         },
       ),
-      // TODO ; create pdfview page and add to here
     ],
   );
 }

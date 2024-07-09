@@ -22,6 +22,9 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
       ),
+      drawer: Drawer(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: const Icon(
