@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:past_papers_app/Data/Models/pdf_file.dart';
+import 'package:past_papers_app/Data/Models/recent_pdf_file.dart';
 import 'package:past_papers_app/Provider/recent_file_provider.dart';
 import 'package:past_papers_app/Routes/router_const.dart';
 import 'package:provider/provider.dart';
 
 class FileTile extends StatelessWidget {
-  final PdfFile pdfFile;
+  final RecentPdfFile pdfFile;
   const FileTile({super.key, required this.pdfFile});
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
         GoRouter.of(context).pushNamed(RouterConstants.pdfViewRouteName,
             pathParameters: {'fId': pdfFile.fileId});
 

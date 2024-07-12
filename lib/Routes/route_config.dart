@@ -36,7 +36,7 @@ class MyRouteConfig {
         path: '/resultView/:sId',
         pageBuilder: (context, state) {
           return MaterialPage(
-              child: resultViewPage(sId: state.pathParameters['sId']!));
+              child: ResultViewPage(sId: state.pathParameters['sId']!));
         },
       ),
     ],

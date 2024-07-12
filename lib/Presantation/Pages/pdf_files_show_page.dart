@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class resultViewPage extends StatefulWidget {
+class ResultViewPage extends StatefulWidget {
   final String sId;
-  const resultViewPage({super.key, required this.sId});
+  const ResultViewPage({super.key, required this.sId});
 
   @override
-  State<resultViewPage> createState() => _resultViewPageState();
+  State<ResultViewPage> createState() => _resultViewPageState();
 }
 
-class _resultViewPageState extends State<resultViewPage> {
+class _resultViewPageState extends State<ResultViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

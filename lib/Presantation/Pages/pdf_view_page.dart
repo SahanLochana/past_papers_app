@@ -8,9 +8,6 @@ class PdfViewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-        child: Text(fid),
-      ),
     );
   }
 }

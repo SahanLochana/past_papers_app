@@ -1,8 +1,8 @@
 import 'package:past_papers_app/Data/Local/handle_recent_files/update_recent_data_map.dart';
-import 'package:past_papers_app/Data/Models/pdf_file.dart';
+import 'package:past_papers_app/Data/Models/recent_pdf_file.dart';
 
 class RecentFileHandler extends UpdateRecentFileDataMap {
-  List<PdfFile> handleRecent(PdfFile pdfFile) {
+  List<RecentPdfFile> handleRecent(RecentPdfFile pdfFile) {
     String fileId = pdfFile.fileId;
 
     List recentfileIds = loadRecentFileList();
@@ -18,10 +18,11 @@ class RecentFileHandler extends UpdateRecentFileDataMap {
       updateTheMap(pdfFile, recentfileDetails);
     }
     writeToDb(recentfileIds, recentfileDetails);
-    List<PdfFile> returnList = [];
+    List<RecentPdfFile> returnList = [];
     for (String fid in recentfileIds) {
       Map details = recentfileDetails[fid];
-      PdfFile file = PdfFile(fileName: details['name'], fileId: details['fid']);
+      RecentPdfFile file =
+          RecentPdfFile(fileName: details['name'], fileId: details['fid']);
       returnList.add(file);
     }
 

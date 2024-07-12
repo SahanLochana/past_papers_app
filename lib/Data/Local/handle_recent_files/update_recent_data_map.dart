@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:past_papers_app/Data/Local/handle_recent_files/update_recent_id_list.dart';
-import 'package:past_papers_app/Data/Models/pdf_file.dart';
+import 'package:past_papers_app/Data/Models/recent_pdf_file.dart';
 
 class UpdateRecentFileDataMap extends UpdateRecentIdListToDb {
   // get saved recent files datas
@@ -18,7 +18,7 @@ class UpdateRecentFileDataMap extends UpdateRecentIdListToDb {
   }
 
   // Update the Map
-  void updateTheMap(PdfFile pdf, Map detailsMap) {
+  void updateTheMap(RecentPdfFile pdf, Map detailsMap) {
     String fileName = pdf.fileName;
     String fileId = pdf.fileId;
     //TODO : add last opened time

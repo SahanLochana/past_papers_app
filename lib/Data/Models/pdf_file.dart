@@ -1,8 +1,8 @@
 class PdfFile {
   final String fileName;
   final String fileId;
-  // final String fileDateTime;
-  // final String fileImagePath;
+  final String iconPath;
 
-  PdfFile({required this.fileName, required this.fileId});
+  PdfFile(
+      {required this.fileName, required this.fileId, required this.iconPath});
 }
