@@ -31,8 +31,8 @@ dependencies:
   flutter_content_placeholder: ^0.0.3
 
   go_router: ^14.2.0
-
-  # syncfusion_flutter_pdfviewer: ^26.1.41
+  pdfx: ^2.6.0
+  internet_file: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -43,3 +43,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/
