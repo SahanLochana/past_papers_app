@@ -5,10 +5,10 @@ class ResultViewPage extends StatefulWidget {
   const ResultViewPage({super.key, required this.sId});
 
   @override
-  State<ResultViewPage> createState() => _resultViewPageState();
+  State<ResultViewPage> createState() => _ResultViewPageState();
 }
 
-class _resultViewPageState extends State<ResultViewPage> {
+class _ResultViewPageState extends State<ResultViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
