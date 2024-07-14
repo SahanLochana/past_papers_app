@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:past_papers_app/Presantation/Widgets/drawer_widget.dart';
+import 'package:past_papers_app/Presantation/Widgets/popup_window_widget.dart';
 import 'package:past_papers_app/Presantation/Widgets/recent_file_list.dart';
 import 'package:past_papers_app/Presantation/Widgets/studying_subjects_list.dart';
 import 'package:past_papers_app/Provider/all_subject_provide.dart';
@@ -26,8 +27,8 @@ class _HomePageState extends State<HomePage> {
       drawer: const DrawerWidget(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // FirebaseServices db = FirebaseServices();
-          // db.getPdf();
+          showDialog(
+              context: context, builder: (context) => const PopUpWindow());
         },
         child: const Icon(
           Icons.search_outlined,

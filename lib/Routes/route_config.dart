@@ -25,10 +25,10 @@ class MyRouteConfig {
       ),
       GoRoute(
         name: RouterConstants.pdfViewRouteName,
-        path: '/pdfView/:fId',
+        path: '/pdfView/:url',
         pageBuilder: (context, state) {
           return MaterialPage(
-              child: PdfViewPage(fid: state.pathParameters['fId']!));
+              child: PdfViewPage(url: state.pathParameters['url']!));
         },
       ),
       GoRoute(

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:internet_file/internet_file.dart';
 import 'package:past_papers_app/Presantation/Components/pdf_page_nav_btn.dart';
 import 'package:pdfx/pdfx.dart';
 
 class PdfViewPage extends StatefulWidget {
-  final String fid;
-  const PdfViewPage({super.key, required this.fid});
+  final String url;
+  const PdfViewPage({super.key, required this.url});
 
   @override
   State<PdfViewPage> createState() => _PdfViewPageState();
@@ -18,9 +19,8 @@ class _PdfViewPageState extends State<PdfViewPage> {
   void initState() {
     super.initState();
     pdfControllerPinch = PdfControllerPinch(
-        // document: PdfDocument.openData(InternetFile.get(
-        //     "https://firebasestorage.googleapis.com/v0/b/past-papers-app-fe52a.appspot.com/o/al_papers%2FAl%20Chemistry%202020%20Sinhala%20part%201.pdf?alt=media&token=cac76773-29d2-4bde-951b-677da2265e67")));
-        document: PdfDocument.openAsset("assets/01.pdf"));
+        document: PdfDocument.openData(InternetFile.get(widget.url)));
+    // document: PdfDocument.openAsset("assets/01.pdf")
   }
 
   @override

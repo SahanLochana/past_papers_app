@@ -15,7 +15,7 @@ class FileTile extends StatelessWidget {
     return GestureDetector(
       onTap: () async {
         GoRouter.of(context).pushNamed(RouterConstants.pdfViewRouteName,
-            pathParameters: {'fId': pdfFile.fileId});
+            pathParameters: {'url': pdfFile.url!});
 
         final reoder = context.read<RecentFilesProvider>();
         reoder.reoderFunc(pdfFile);
